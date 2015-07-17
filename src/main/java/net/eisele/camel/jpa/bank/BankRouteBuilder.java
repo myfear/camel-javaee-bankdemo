@@ -42,8 +42,8 @@ public class BankRouteBuilder extends RouteBuilder {
          * </split>
          * </route>
          */
-        String vmname = System.getProperty("jboss.server.data.dir");
-        from("file://" + vmname + "/inbox?delete=true").routeId("readFile").split(xpath("//Bank/Transaction")).to("direct:processTransaction");
+        //String vmname = System.getProperty("jboss.server.data.dir");
+        from("file://{{sys:jboss.server.data.dir}}/inbox?delete=true").routeId("readFile").split(xpath("//Bank/Transaction")).to("direct:processTransaction");
 
         /**
          * .autoStartup(false)
